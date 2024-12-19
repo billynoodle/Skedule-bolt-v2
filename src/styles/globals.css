@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased text-gray-900;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-gray-700 border border-gray-300 hover:bg-gray-50;
+  }
+}
+
+/* Canvas positioning */
+.fabric-canvas-container {
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.fabric-canvas-container canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Canvas styles */
+.annotation-canvas {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  pointer-events: all !important;
+  touch-action: none;
+}
+
+.canvas-container {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  touch-action: none;
+}
+
+.canvas-container canvas {
+  touch-action: none;
+}
+
+.canvas-container .selected {
+  border: 1px solid #2563eb !important;
+}
+
+.canvas-container .drawing {
+  border: 1px dashed #2563eb !important;
+}
+
+.drawing-mode {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  touch-action: none;
+  cursor: crosshair !important;
+}
+
+/* PDF Text Layer styles */
+.react-pdf__Page__textContent {
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  cursor: text;
+  left: 0;
+  line-height: 1;
+  opacity: 0.2;
+  position: absolute;
+  top: 0;
+  transform-origin: 0% 0%;
+  white-space: pre;
+  width: 100%;
+  height: 100%;
+}
+
+.react-pdf__Page__textContent span {
+  color: transparent;
+  pointer-events: all;
+  position: absolute;
+  transform-origin: 0% 0%;
+  white-space: pre;
+}
+
+.react-pdf__Page__textContent::selection,
+.react-pdf__Page__textContent span::selection {
+  background: rgba(37, 99, 235, 0.3);
+}
+
+/* PDF Annotation Layer styles */
+.react-pdf__Page__annotations {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.react-pdf__Page__annotations .annotationLayer {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.react-pdf__Page__annotations .annotationLayer section {
+  position: absolute;
+}
+
+.react-pdf__Page__annotations .annotationLayer .linkAnnotation {
+  cursor: pointer;
+  position: absolute;
+}
+
+.react-pdf__Page__annotations .annotationLayer .linkAnnotation > a {
+  background: transparent;
+  border: none;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.react-pdf__Page__annotations .annotationLayer .linkAnnotation > a:hover {
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.react-pdf__Page__annotations .annotationLayer .popupAnnotation {
+  display: none;
+}
